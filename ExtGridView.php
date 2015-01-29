@@ -1,6 +1,8 @@
 <?php
 namespace Intersvyaz\ExtendedGrid;
 
+\Yii::import('zii.widgets.grid.CGridView');
+
 use CActiveDataProvider;
 use CException;
 use CGridColumn;
