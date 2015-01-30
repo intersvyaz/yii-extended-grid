@@ -30,17 +30,15 @@ class ExtGridView extends CGridView
         $this->headers = $this->processColumns($this->columns);
         $this->columns = [];
         $index = 0;
-        foreach ($this->headers as &$column) {
+        foreach ($this->headers as $column) {
             if (is_array($column)) {
-                foreach($column['columns'] as &$subcolumn){
-                    $this->columns[$index] = $subcolumn;
+                foreach($column['columns'] as $subcolumn){
+                    $this->columns[$index++] = $subcolumn;
                 }
             }else{
                 $column->headerHtmlOptions = array_merge($column->headerHtmlOptions, ['rowspan' => 2]);
-                $this->columns[$index] = $column;
+                $this->columns[$index++] = $column;
             }
-
-            $index++;
         }
 
         foreach($this->columns as $i => $column){
@@ -70,7 +68,7 @@ class ExtGridView extends CGridView
             } else {
                 $column = $this->initColumn($column);
                 if ($column->visible) {
-                    $newColumns[$i] = $this->initColumn($column);
+                    $newColumns[$i] = $column;
                 }
             }
         }
@@ -112,10 +110,6 @@ class ExtGridView extends CGridView
             }
             $column = Yii::createComponent($params, $this);
         }
-        if (!$column->visible) {
-            return false;
-        }
-
         return $column;
     }
 
