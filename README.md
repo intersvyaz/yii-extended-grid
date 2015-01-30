@@ -1,5 +1,7 @@
 # yii-extended-grid
 
-Extended CGridView:
+Расширеный CGridView:
 
-- add grouping column
+Изменения:
+- возможность сгруппировать заголовки колонок
+
